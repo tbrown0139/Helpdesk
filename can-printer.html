@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Step-by-step instructions to install Canon Color imageCLASS MF741Cdw printer drivers on Windows and macOS.">
+    <title>Knovon Helpdesk - Driver Installation</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background: #f9f9f9;
+        }
+
+        header {
+            background-color: #0078d4;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        header img {
+            max-width: 150px;
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        header h1, header h2 {
+            margin: 0;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h3 {
+            margin-top: 30px;
+            color: #0078d4;
+        }
+
+        /* Tab Navigation */
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 2px solid #0078d4;
+            border-radius: 5px;
+            margin: 0 5px;
+            background-color: white;
+            transition: background-color 0.3s;
+        }
+
+        .tab.active {
+            background-color: #0078d4;
+            color: white;
+        }
+
+        /* Instructions */
+        .instructions {
+            display: none;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            background: white;
+        }
+
+        .instructions.active {
+            display: block;
+        }
+
+        ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #0078d4;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 10px;
+            font-size: 14px;
+            background: #333;
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 20px;
+            }
+
+            .tab {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+
+            main {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://asset.knovon.net/Knovon_black.png" alt="Knovon Logo">
+        <h1>Knovon Helpdesk</h1>
+        <h2>Install Canon Printer Drivers</h2>
+    </header>
+
+    <main>
+        <p>Follow these step-by-step instructions to install your Canon Color imageCLASS MF741Cdw printer drivers. Select your operating system below:</p>
+        
+        <!-- Tab Navigation -->
+        <div class="tab-container">
+            <div class="tab active" data-target="windows">Windows</div>
+            <div class="tab" data-target="macos">macOS</div>
+        </div>
+        
+        <!-- Instructions for Windows -->
+        <div class="instructions active" id="windows">
+            <h3>For Windows:</h3>
+            <ol>
+                <li>Visit the <a href="https://www.usa.canon.com/support/p/color-imageclass-mf741cdw" target="_blank">Canon Driver Support page</a>.</li>
+                <li>Select your Windows version from the dropdown menu.</li>
+                <li>Download the "MF743Cdw/MF741Cdw MFDrivers" package.</li>
+                <li>Locate the downloaded file and double-click it to start installation.</li>
+                <li>Follow the on-screen prompts to complete the setup.</li>
+            </ol>
+        </div>
+
+        <!-- Instructions for macOS -->
+        <div class="instructions" id="macos">
+            <h3>For macOS:</h3>
+            <ol>
+                <li>Visit the <a href="https://www.usa.canon.com/support/p/color-imageclass-mf741cdw" target="_blank">Canon Driver Support page</a>.</li>
+                <li>Select your macOS version from the dropdown menu.</li>
+                <li>Download the "Mac MF Printer Driver" package.</li>
+                <li>Locate the downloaded file (usually in the Downloads folder).</li>
+                <li>Double-click the installer and follow the on-screen instructions.</li>
+                <li>Ensure the printer is added in "System Preferences > Printers & Scanners."</li>
+            </ol>
+        </div>
+    </main>
+
+    <footer>
+        <p>Powered by Knovon Helpdesk. For assistance, contact us at <a href="mailto:support@knovon.org">support@knovon.org</a>.</p>
+    </footer>
+
+    <script>
+        // Tab functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                this.classList.add('active');
+
+                // Show corresponding instructions
+                const target = this.getAttribute('data-target');
+                document.querySelectorAll('.instructions').forEach(instr => {
+                    instr.classList.remove('active');
+                    if (instr.id === target) instr.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
