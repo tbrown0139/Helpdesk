@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Step-by-step instructions to install Canon Color imageCLASS MF741Cdw printer drivers on Windows and macOS.">
-    <title>Knovon Helpdesk - Driver Installation</title>
+    <meta name="description" content="Step-by-step instructions to install Canon Color imageCLASS MF741Cdw printer drivers on Windows and macOS, with authentication setup guidance.">
+    <title>Knovon Helpdesk - Driver Installation and Authentication</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         /* General Styles */
@@ -44,7 +44,6 @@
             color: #0078d4;
         }
 
-        /* Tab Navigation */
         .tab-container {
             display: flex;
             justify-content: center;
@@ -66,7 +65,6 @@
             color: white;
         }
 
-        /* Instructions */
         .instructions {
             display: none;
             border: 1px solid #ccc;
@@ -96,7 +94,14 @@
             text-decoration: underline;
         }
 
-        /* Footer */
+        .note {
+            background-color: #e6f7ff;
+            padding: 15px;
+            border-left: 5px solid #0078d4;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
         footer {
             text-align: center;
             margin-top: 30px;
@@ -106,7 +111,6 @@
             color: white;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             header h1 {
                 font-size: 20px;
@@ -162,6 +166,17 @@
                 <li>Double-click the installer and follow the on-screen instructions.</li>
                 <li>Ensure the printer is added in "System Preferences > Printers & Scanners."</li>
             </ol>
+        </div>
+
+        <!-- Authentication Info -->
+        <div class="note">
+            <h3>Authentication Requirements:</h3>
+            <p>To use this device, you need to authenticate with an ID and PIN. The default settings are:</p>
+            <ul>
+                <li><strong>ID:</strong> The last 7 digits of your phone number.</li>
+                <li><strong>PIN:</strong> The last 4 digits of your phone number.</li>
+            </ul>
+            <p>You can update these settings in the <a href="https://knovon.org/one" target="_blank">Knovon One User Portal</a>.</p>
         </div>
     </main>
 
