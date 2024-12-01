@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Step-by-step instructions to install Canon Color imageCLASS MF741Cdw printer drivers and authentication setup.">
+    <meta name="description" content="Step-by-step instructions to install Canon Color imageCLASS MF741Cdw printer drivers, scan documents, and make copies.">
     <meta name="robots" content="noindex, nofollow">
-    <title>Knovon Helpdesk - Driver Installation</title>
+    <title>Knovon Helpdesk - Printer and Scanner Help</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         /* General Styles */
@@ -187,7 +187,7 @@
     <header>
         <img src="https://asset.knovon.net/Knovon_black.png" alt="Knovon Logo">
         <div>
-            <h1>Canon Printer Driver Installation</h1>
+            <h1>Printer and Scanner Help</h1>
             <h2>Knovon Helpdesk</h2>
         </div>
     </header>
@@ -199,12 +199,14 @@
             <p><strong>Important:</strong> Starting in 2025, all computers that want to access and print to this printer will require the driver to be installed and authenticated via a Knovon account or an Auth ID.</p>
         </div>
 
-        <p>Follow these step-by-step instructions to install your Canon Color imageCLASS MF741Cdw printer drivers. Select your operating system below:</p>
+        <p>Follow these step-by-step instructions for your Canon Color imageCLASS MF741Cdw printer. Select the topic you need help with below:</p>
         
         <!-- Tab Navigation -->
         <div class="tab-container">
-            <div class="tab active" data-target="windows">Windows</div>
-            <div class="tab" data-target="macos">macOS</div>
+            <div class="tab active" data-target="windows">Install Drivers (Windows)</div>
+            <div class="tab" data-target="macos">Install Drivers (macOS)</div>
+            <div class="tab" data-target="scan">Scan Documents</div>
+            <div class="tab" data-target="copy">Make Copies</div>
         </div>
         
         <!-- Instructions for Windows -->
@@ -232,15 +234,27 @@
             </ol>
         </div>
 
-        <!-- Authentication Info -->
-        <div class="note">
-            <h3>Authentication Requirements:</h3>
-            <p>To use this device, you need to authenticate with an ID and PIN. The default settings are:</p>
-            <ul>
-                <li><strong>ID:</strong> The last 7 digits of your phone number.</li>
-                <li><strong>PIN:</strong> The last 4 digits of your phone number.</li>
-            </ul>
-            <p>You can update these settings in the <a href="https://knovon.org/one" target="_blank">Knovon One User Portal</a>.</p>
+        <!-- Instructions for Scanning Documents -->
+        <div class="instructions" id="scan">
+            <h3>Scan Documents and Email Them:</h3>
+            <ol>
+                <li>Place the document you want to scan on the printer's scanner bed or in the automatic feeder.</li>
+                <li>On the printer's touchscreen, select <strong>Scan</strong>.</li>
+                <li>Choose <strong>Email</strong> as the destination.</li>
+                <li>Enter your email address in the prompt or select it from the address book.</li>
+                <li>Press <strong>Start</strong> to begin scanning. The document will be sent to your email.</li>
+            </ol>
+        </div>
+
+        <!-- Instructions for Making Copies -->
+        <div class="instructions" id="copy">
+            <h3>Make Copies:</h3>
+            <ol>
+                <li>Place the document you want to copy on the scanner bed or in the automatic feeder.</li>
+                <li>On the printer's touchscreen, select <strong>Copy</strong>.</li>
+                <li>Set the number of copies and adjust settings such as color or black and white.</li>
+                <li>Press <strong>Start</strong> to begin copying.</li>
+            </ol>
         </div>
     </main>
 
