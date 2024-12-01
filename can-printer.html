@@ -3,47 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Step-by-step instructions to install Canon Color imageCLASS MF741Cdw printer drivers on Windows and macOS, with authentication setup guidance.">
-    <title>Knovon Helpdesk - Driver Installation and Authentication</title>
+    <meta name="description" content="Step-by-step instructions to install Canon Color imageCLASS MF741Cdw printer drivers and authentication setup.">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Knovon Helpdesk - Driver Installation</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         /* General Styles */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'San Francisco', 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             color: #333;
             background: #f9f9f9;
         }
 
+        /* Header Styles */
         header {
-            background-color: #0078d4;
-            padding: 20px;
+            background: linear-gradient(180deg, #f1f1f1, #ffffff);
+            padding: 30px 20px;
             text-align: center;
-            color: white;
+            border-bottom: 1px solid #ccc;
         }
 
         header img {
-            max-width: 150px;
+            max-width: 100px;
             display: block;
-            margin: 0 auto 10px;
-        }
-
-        header h1, header h2 {
-            margin: 0;
-        }
-
-        main {
-            padding: 20px;
-            max-width: 900px;
             margin: 0 auto;
         }
 
-        h3 {
-            margin-top: 30px;
-            color: #0078d4;
+        header h1 {
+            margin: 10px 0;
+            font-size: 28px;
+            color: #333;
         }
 
+        header h2 {
+            font-size: 18px;
+            color: #666;
+            margin: 0;
+        }
+
+        /* Warning Card */
+        .warning-card {
+            background: #ffe6e6;
+            color: #b30000;
+            border: 2px solid #b30000;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        /* Tab Navigation */
         .tab-container {
             display: flex;
             justify-content: center;
@@ -102,15 +114,32 @@
             border-radius: 5px;
         }
 
+        /* Footer Styles */
         footer {
-            text-align: center;
-            margin-top: 30px;
-            padding: 10px;
+            background: #f1f1f1;
+            border-top: 1px solid #ccc;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             font-size: 14px;
-            background: #333;
-            color: white;
+            color: #333;
         }
 
+        footer .logo {
+            opacity: 0.3;
+        }
+
+        footer .logo img {
+            max-width: 80px;
+        }
+
+        footer .warning {
+            color: #b30000;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             header h1 {
                 font-size: 20px;
@@ -128,12 +157,19 @@
     </style>
 </head>
 <body>
+    <!-- Header Section -->
     <header>
         <img src="https://asset.knovon.net/Knovon_black.png" alt="Knovon Logo">
-        <h1>Knovon Helpdesk</h1>
-        <h2>Install Canon Printer Drivers</h2>
+        <h1>Canon Printer Driver Installation</h1>
+        <h2>Knovon Helpdesk</h2>
     </header>
 
+    <!-- Warning Card -->
+    <div class="warning-card">
+        <p><strong>Important:</strong> Starting in 2025, all computers that want to access and print to this printer will require the driver to be installed and authenticated via a Knovon account or an Auth ID.</p>
+    </div>
+
+    <!-- Main Content -->
     <main>
         <p>Follow these step-by-step instructions to install your Canon Color imageCLASS MF741Cdw printer drivers. Select your operating system below:</p>
         
@@ -180,8 +216,14 @@
         </div>
     </main>
 
+    <!-- Footer Section -->
     <footer>
-        <p>Powered by Knovon Helpdesk. For assistance, contact us at <a href="mailto:support@knovon.org">support@knovon.org</a>.</p>
+        <div class="logo">
+            <img src="https://asset.knovon.net/Knovon_black.png" alt="Knovon Logo">
+        </div>
+        <div>
+            <p>Knovon Helpdesk - <span class="warning">This information is considered sensitive.</span></p>
+        </div>
     </footer>
 
     <script>
