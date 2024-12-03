@@ -1,31 +1,112 @@
 {
-  "title": "Minecraft Server Dashboard",
-  "widgets": [
-    {
-      "type": "title",
-      "text": "Minecraft Server Metrics"
-    },
-    {
-      "type": "value",
-      "title": "Active Players",
-      "data": {
-        "url": "https://api.mcsrvstat.us/2/mc.narova.org:25565",
-        "key": "players.online"
-      },
-      "unit": " players"
-    },
-    {
-      "type": "value",
-      "title": "Server Status",
-      "data": {
-        "url": "https://api.mcsrvstat.us/2/mc.narova.org:25565",
-        "key": "online"
-      },
-      "format": {
-        "true": "Online",
-        "false": "Offline"
+   "name": "Knovon Minecraft Server Dashboard",
+   "sources": [
+      {
+         "auth": "none",
+         "name": "Minecraft API",
+         "endpoints": [
+            {
+               "id": "minecraft-status",
+               "url": "https://api.mcsrvstat.us/2/mc.narova.org:25565"
+            }
+         ]
       }
-    }
-  ],
-  "refresh": 60
+   ],
+   "dashboards": [
+      {
+         "name": "Minecraft Server Stats",
+         "color": "active",
+         "source": {
+            "endpoint": "minecraft-status",
+            "refresh": 30
+         },
+         "widgets": [
+            {
+               "width": 1,
+               "image": {
+                  "url": "https://asset.knovon.net/Knovon_white.png"
+               }
+            },
+            {
+               "width": 2,
+               "basic": {
+                  "title": "Active Players",
+                  "value": "{players.online}",
+                  "unit": " players"
+               },
+               "source": {
+                  "endpoint": "minecraft-status"
+               }
+            },
+            {
+               "width": 2,
+               "basic": {
+                  "title": "Max Players",
+                  "value": "{players.max}",
+                  "unit": " players"
+               },
+               "source": {
+                  "endpoint": "minecraft-status"
+               }
+            },
+            {
+               "width": 2,
+               "basic": {
+                  "title": "Server Status",
+                  "value": "{online}",
+                  "format": {
+                     "true": "Online",
+                     "false": "Offline"
+                  }
+               },
+               "source": {
+                  "endpoint": "minecraft-status"
+               }
+            },
+            {
+               "width": 2,
+               "chart": {
+                  "title": "Player Count Over Time",
+                  "series": [
+                     {
+                        "id": "playerCount",
+                        "name": "Active Players",
+                        "type": "line",
+                        "color": "#00FF00"
+                     }
+                  ]
+               },
+               "source": {
+                  "endpoint": "minecraft-status",
+                  "mapping": {
+                     "data[].time": "timestamps[]",
+                     "data[].playerCount": "players.online"
+                  }
+               }
+            },
+            {
+               "width": 2,
+               "chart": {
+                  "title": "Server Memory Usage",
+                  "legend": true,
+                  "series": [
+                     {
+                        "id": "memoryUsage",
+                        "name": "Memory Usage",
+                        "type": "bar",
+                        "color": "#3d89ba"
+                     }
+                  ]
+               },
+               "source": {
+                  "endpoint": "minecraft-status",
+                  "mapping": {
+                     "data[].x": "memory[].time",
+                     "data[].memoryUsage": "memory[].usage"
+                  }
+               }
+            }
+         ]
+      }
+   ]
 }
