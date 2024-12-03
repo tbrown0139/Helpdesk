@@ -1,0 +1,31 @@
+{
+  "title": "Minecraft Server Dashboard",
+  "widgets": [
+    {
+      "type": "title",
+      "text": "Minecraft Server Metrics"
+    },
+    {
+      "type": "value",
+      "title": "Active Players",
+      "data": {
+        "url": "https://api.mcsrvstat.us/2/mc.narova.org:25565",
+        "key": "players.online"
+      },
+      "unit": " players"
+    },
+    {
+      "type": "value",
+      "title": "Server Status",
+      "data": {
+        "url": "https://api.mcsrvstat.us/2/mc.narova.org:25565",
+        "key": "online"
+      },
+      "format": {
+        "true": "Online",
+        "false": "Offline"
+      }
+    }
+  ],
+  "refresh": 60
+}
