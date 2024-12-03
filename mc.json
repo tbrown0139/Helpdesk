@@ -74,22 +74,67 @@
             },
             {
                "width": 4,
-               "chart": {
-                  "title": "Player Count Over Time",
-                  "series": [
+               "table": {
+                  "title": "Players List",
+                  "columns": [
                      {
-                        "id": "playerCount",
-                        "name": "Active Players",
-                        "type": "line",
-                        "color": "#00FF00"
+                        "id": "player_name",
+                        "title": "Player Name",
+                        "style": "bold",
+                        "flex": 2
                      }
                   ]
                },
                "source": {
                   "endpoint": "minecraft-status",
                   "mapping": {
-                     "data[].x": "timestamp",
-                     "data[].playerCount": "players.online"
+                     "data[].player_name": "players.list[]"
+                  }
+               }
+            },
+            {
+               "width": 4,
+               "table": {
+                  "title": "Additional Server Info",
+                  "columns": [
+                     {
+                        "id": "field",
+                        "title": "Field",
+                        "style": "bold",
+                        "flex": 2
+                     },
+                     {
+                        "id": "value",
+                        "title": "Value",
+                        "align": "right"
+                     }
+                  ],
+                  "data": [
+                     {
+                        "field": "IP Address",
+                        "value": "{ip}"
+                     },
+                     {
+                        "field": "Port",
+                        "value": "{port}"
+                     },
+                     {
+                        "field": "Version",
+                        "value": "{version}"
+                     },
+                     {
+                        "field": "Map",
+                        "value": "{map}"
+                     }
+                  ]
+               },
+               "source": {
+                  "endpoint": "minecraft-status",
+                  "mapping": {
+                     "ip": "ip",
+                     "port": "port",
+                     "version": "version",
+                     "map": "map"
                   }
                }
             }
