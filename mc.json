@@ -14,7 +14,7 @@
    ],
    "dashboards": [
       {
-         "name": "Knovon Server Status",
+         "name": "Minecraft Server Stats",
          "color": "active",
          "source": {
             "endpoint": "minecraft-status",
@@ -35,7 +35,10 @@
                   "unit": " players"
                },
                "source": {
-                  "endpoint": "minecraft-status"
+                  "endpoint": "minecraft-status",
+                  "mapping": {
+                     "players.online": "players.online"
+                  }
                }
             },
             {
@@ -46,7 +49,10 @@
                   "unit": " players"
                },
                "source": {
-                  "endpoint": "minecraft-status"
+                  "endpoint": "minecraft-status",
+                  "mapping": {
+                     "players.max": "players.max"
+                  }
                }
             },
             {
@@ -60,11 +66,14 @@
                   }
                },
                "source": {
-                  "endpoint": "minecraft-status"
+                  "endpoint": "minecraft-status",
+                  "mapping": {
+                     "online": "online"
+                  }
                }
             },
             {
-               "width": 2,
+               "width": 4,
                "chart": {
                   "title": "Player Count Over Time",
                   "series": [
@@ -79,30 +88,8 @@
                "source": {
                   "endpoint": "minecraft-status",
                   "mapping": {
-                     "data[].time": "timestamps[]",
+                     "data[].x": "timestamp",
                      "data[].playerCount": "players.online"
-                  }
-               }
-            },
-            {
-               "width": 2,
-               "chart": {
-                  "title": "Server Memory Usage",
-                  "legend": true,
-                  "series": [
-                     {
-                        "id": "memoryUsage",
-                        "name": "Memory Usage",
-                        "type": "bar",
-                        "color": "#3d89ba"
-                     }
-                  ]
-               },
-               "source": {
-                  "endpoint": "minecraft-status",
-                  "mapping": {
-                     "data[].x": "memory[].time",
-                     "data[].memoryUsage": "memory[].usage"
                   }
                }
             }
