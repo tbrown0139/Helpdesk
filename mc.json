@@ -14,7 +14,7 @@
    ],
    "dashboards": [
       {
-         "name": "Minecraft Server Stats",
+         "name": "Knovon Server Status",
          "color": "active",
          "source": {
             "endpoint": "minecraft-status",
