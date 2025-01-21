@@ -39,6 +39,16 @@
             color: #333;
         }
 
+        /* Warning Banner */
+        .warning-banner {
+            background-color: #ffcccc;
+            color: #b30000;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            border-bottom: 2px solid #b30000;
+        }
+
         /* Main Content Styling */
         main {
             padding: 20px 30px;
@@ -141,6 +151,11 @@
     </style>
 </head>
 <body>
+    <!-- Warning Banner -->
+    <div class="warning-banner">
+        Sensitive Data: This Helpdesk is meant for internal use only. Any sharing will result in legal action/punishment. Knovon holds a copyright on all documented data. Access can be revoked at any time.
+    </div>
+
     <!-- Header Section -->
     <header>
         <img src="https://asset.knovon.net/Knovon_black.png" alt="Knovon Logo">
@@ -180,15 +195,20 @@
     <!-- JavaScript to Load Google Sheet Data -->
     <script>
         async function fetchArticles() {
-            const sheetURL = 'https://docs.google.com/spreadsheets/d/e/YOUR_SHEET_ID/pub?output=csv';
+            const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR02C8wL_oKyAFgh2VBtrBV5K4vLezEe_jkt6WtgJ-VR3HaPnM-VLVOHJ9cqRVlVuv6Fje8Qni_dYfL/pub?gid=1613827474&single=true&output=csv';
             try {
                 const response = await fetch(sheetURL);
                 const data = await response.text();
 
-                const rows = data.split('\n');
+                const rows = data.split('\\n');
                 const articles = rows.slice(1).map(row => {
                     const [id, title, link, keywords] = row.split(',');
-                    return { id: id.trim(), title: title.trim(), link: link.trim(), keywords: keywords.trim() };
+                    return {
+                        id: id.trim(),
+                        title: title.trim(),
+                        link: link.trim(),
+                        keywords: keywords.trim().split('|'),
+                    };
                 });
 
                 populateArticles(articles);
@@ -228,7 +248,7 @@
             const filteredArticles = articles.filter(article =>
                 article.id.includes(query) ||
                 article.title.toLowerCase().includes(query) ||
-                article.keywords.toLowerCase().includes(query)
+                article.keywords.some(keyword => keyword.toLowerCase().includes(query))
             );
 
             populateArticles(filteredArticles);
