@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,14 +40,16 @@
             color: #333;
         }
 
-        /* Warning Banner */
-        .warning-banner {
+        /* Warning Card */
+        .warning-card {
             background-color: #ffcccc;
             color: #b30000;
-            padding: 15px;
+            padding: 20px;
+            border: 1px solid #b30000;
+            border-radius: 8px;
+            margin-bottom: 20px;
             text-align: center;
             font-weight: bold;
-            border-bottom: 2px solid #b30000;
         }
 
         /* Main Content Styling */
@@ -151,11 +154,6 @@
     </style>
 </head>
 <body>
-    <!-- Warning Banner -->
-    <div class="warning-banner">
-        Sensitive Data: This Helpdesk is meant for internal use only. Any sharing will result in legal action/punishment. Knovon holds a copyright on all documented data. Access can be revoked at any time.
-    </div>
-
     <!-- Header Section -->
     <header>
         <img src="https://asset.knovon.net/Knovon_black.png" alt="Knovon Logo">
@@ -164,6 +162,11 @@
 
     <!-- Main Content -->
     <main>
+        <!-- Warning Card -->
+        <div class="warning-card">
+            Sensitive Data: This Helpdesk is meant for internal use only. Any sharing will result in legal action/punishment. Knovon holds a copyright on all documented data. Access can be revoked at any time.
+        </div>
+
         <h2>Welcome to Knovon Helpdesk</h2>
         <p>Select a topic below to find helpful articles and guides:</p>
 
@@ -194,14 +197,16 @@
 
     <!-- JavaScript to Load Google Sheet Data -->
     <script>
+        let allArticles = [];
+
         async function fetchArticles() {
             const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR02C8wL_oKyAFgh2VBtrBV5K4vLezEe_jkt6WtgJ-VR3HaPnM-VLVOHJ9cqRVlVuv6Fje8Qni_dYfL/pub?gid=1613827474&single=true&output=csv';
             try {
                 const response = await fetch(sheetURL);
                 const data = await response.text();
 
-                const rows = data.split('\\n');
-                const articles = rows.slice(1).map(row => {
+                const rows = data.split('\n');
+                allArticles = rows.slice(1).map(row => {
                     const [id, title, link, keywords] = row.split(',');
                     return {
                         id: id.trim(),
@@ -211,8 +216,7 @@
                     };
                 });
 
-                populateArticles(articles);
-                return articles;
+                populateArticles(allArticles);
             } catch (error) {
                 document.getElementById('errorMessage').style.display = 'block';
                 console.error('Error loading articles:', error);
@@ -243,9 +247,7 @@
 
         async function searchArticles() {
             const query = document.getElementById('searchInput').value.toLowerCase();
-            const articles = await fetchArticles();
-
-            const filteredArticles = articles.filter(article =>
+            const filteredArticles = allArticles.filter(article =>
                 article.id.includes(query) ||
                 article.title.toLowerCase().includes(query) ||
                 article.keywords.some(keyword => keyword.toLowerCase().includes(query))
