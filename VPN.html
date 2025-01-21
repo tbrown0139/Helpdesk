@@ -3,91 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knovon Helpdesk</title>
+    <meta name="description" content="Step-by-step instructions to configure 1.1.1.1 Zero Trust VPN for macOS, iOS, and Android.">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Knovon Helpdesk - VPN Setup</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
+        /* General Styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
             color: #333;
+            background: #f9f9f9;
         }
 
+        /* Header Styles */
         header {
             display: flex;
             align-items: center;
-            background-color: white;
-            padding: 10px 20px;
+            padding: 20px 30px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #eaeaea;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         header img {
-            height: 40px;
-            margin-right: 10px;
+            max-height: 40px;
+            margin-right: 20px;
         }
 
         header h1 {
-            font-size: 1.5rem;
-            color: #333;
             margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
         }
 
-        .container {
+        header h2 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 400;
+            color: #555;
+        }
+
+        /* Main Content Styling */
+        main {
+            padding: 20px 30px;
             max-width: 900px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
         }
 
-        .title {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: #007BFF;
-        }
-
-        .content {
+        main p {
             line-height: 1.6;
+            color: #555;
         }
 
-        .content h2 {
-            font-size: 1.4rem;
-            margin-top: 20px;
+        h3 {
+            margin-top: 30px;
+            color: #0078d4;
         }
 
-        .content p {
-            margin: 10px 0;
+        /* Tab Navigation */
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
         }
 
-        .content ol {
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 2px solid #0078d4;
+            border-radius: 5px;
+            margin: 0 5px;
+            background-color: white;
+            transition: background-color 0.3s;
+        }
+
+        .tab.active {
+            background-color: #0078d4;
+            color: white;
+        }
+
+        .instructions {
+            display: none;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            background: white;
+        }
+
+        .instructions.active {
+            display: block;
+        }
+
+        ol {
             padding-left: 20px;
         }
 
-        .content ol li {
-            margin: 10px 0;
+        li {
+            margin-bottom: 10px;
         }
 
+        a {
+            color: #0078d4;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer Styles */
         footer {
-            text-align: center;
-            padding: 10px;
-            font-size: 0.9rem;
-            color: #777;
+            background: #f9f9f9;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: #333;
+            border-top: 1px solid #eaeaea;
+            max-width: 900px;
+            margin: 20px auto 0 auto;
         }
 
+        footer .logo {
+            opacity: 0.3;
+        }
+
+        footer .logo img {
+            max-width: 80px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            header h1 {
+                font-size: 20px;
+            }
+
+            main {
+                padding: 15px;
+            }
+
+            footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Header Section -->
     <header>
         <img src="https://asset.knovon.net/Knovon_black.png" alt="Knovon Logo">
-        <h1>Helpdesk</h1>
+        <div>
+            <h1>VPN Setup</h1>
+            <h2>Knovon Helpdesk</h2>
+        </div>
     </header>
 
-    <div class="container">
-        <div class="title">How to Add VPN via 1.1.1.1 Zero Trust</div>
+    <!-- Main Content -->
+    <main>
+        <p>Follow these step-by-step instructions to configure the 1.1.1.1 Zero Trust VPN for your device. Select your platform below:</p>
 
-        <div class="content">
-            <h2>For macOS</h2>
+        <!-- Tab Navigation -->
+        <div class="tab-container">
+            <div class="tab active" data-target="macos">macOS</div>
+            <div class="tab" data-target="ios">iOS</div>
+            <div class="tab" data-target="android">Android</div>
+        </div>
+
+        <!-- Instructions for macOS -->
+        <div class="instructions active" id="macos">
+            <h3>For macOS:</h3>
             <ol>
                 <li>Download and install the Cloudflare WARP Client from <a href="https://developers.cloudflare.com/warp-client/" target="_blank">this link</a>.</li>
                 <li>Launch the WARP application and open the settings.</li>
@@ -95,30 +189,58 @@
                 <li>Authenticate with your Knovon ID credentials.</li>
                 <li>Enable WARP mode and verify the connection is active.</li>
             </ol>
+        </div>
 
-            <h2>For iOS</h2>
+        <!-- Instructions for iOS -->
+        <div class="instructions" id="ios">
+            <h3>For iOS:</h3>
             <ol>
                 <li>Download the <strong>1.1.1.1: Faster Internet</strong> app from the App Store.</li>
                 <li>Open the app and navigate to account settings.</li>
                 <li>Select "Login with Zero Trust" and input the domain: <strong>knovon.cloudflareaccess.com</strong>.</li>
                 <li>Authenticate with your Knovon ID credentials and enable the VPN.</li>
             </ol>
+        </div>
 
-            <h2>For Android</h2>
+        <!-- Instructions for Android -->
+        <div class="instructions" id="android">
+            <h3>For Android:</h3>
             <ol>
                 <li>Download the <strong>1.1.1.1: Faster Internet</strong> app from the Google Play Store.</li>
                 <li>Launch the app and go to account settings.</li>
                 <li>Select "Login with Zero Trust" and enter the domain: <strong>knovon.cloudflareaccess.com</strong>.</li>
                 <li>Authenticate with your Knovon ID credentials and toggle the VPN on.</li>
             </ol>
-
-            <h2>Troubleshooting Tips</h2>
-            <p>Ensure your Knovon ID credentials are active and verify your internet connection. If issues persist, contact Knovon IT Support.</p>
         </div>
-    </div>
+    </main>
 
+    <!-- Footer Section -->
     <footer>
-        Powered by Knovon Helpdesk &copy; 2025
+        <div class="logo">
+            <img src="https://asset.knovon.net/Knovon_black.png" alt="Knovon Logo">
+        </div>
+        <div>
+            <p>Knovon Helpdesk - Secure Resources for Employees</p>
+        </div>
     </footer>
+
+    <script>
+        // Tab functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                this.classList.add('active');
+
+                // Show corresponding instructions
+                const target = this.getAttribute('data-target');
+                document.querySelectorAll('.instructions').forEach(instr => {
+                    instr.classList.remove('active');
+                    if (instr.id === target) instr.classList.add('active');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
