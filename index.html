@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Knovon Helpdesk Home Page for Employees">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Knovon Helpdesk - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background: #f9f9f9;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            align-items: center;
+            padding: 20px 30px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #eaeaea;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header img {
+            max-height: 40px;
+            margin-right: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Main Content Styling */
+        main {
+            padding: 20px 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        main h2 {
+            font-size: 20px;
+            color: #0078d4;
+            margin-bottom: 20px;
+        }
+
+        .search-bar {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+            font-size: 14px;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            border: 1px solid #0078d4;
+            background-color: #0078d4;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 0 4px 4px 0;
+            transition: background-color 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: #005bb5;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h3 {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .card a {
+            color: #0078d4;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #f9f9f9;
+            padding: 20px 30px;
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+            border-top: 1px solid #eaeaea;
+        }
+
+        footer .logo img {
+            max-width: 80px;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <img src="https://asset.knovon.net/Knovon_black.png" alt="Knovon Logo">
+        <h1>Knovon Helpdesk</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <h2>Welcome to Knovon Helpdesk</h2>
+        <p>Select a topic below to find helpful articles and guides:</p>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search by keyword, article name, or ID">
+            <button onclick="searchArticles()">Search</button>
+        </div>
+
+        <!-- Dynamic Card Section -->
+        <div class="card-container" id="articleCards">
+            <!-- Cards will be dynamically populated here -->
+        </div>
+
+        <!-- Error Message -->
+        <p class="error-message" id="errorMessage" style="display: none;">
+            Unable to load articles. Please call Knovon Helpdesk at <strong>(801) 987-0671</strong> or email <a href="mailto:Helpdesk@knovon.org">Helpdesk@knovon.org</a> for assistance.
+        </p>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="logo">
+            <img src="https://asset.knovon.net/Knovon_black.png" alt="Knovon Logo">
+        </div>
+        <p>Knovon Helpdesk - Empowering Employees</p>
+    </footer>
+
+    <!-- JavaScript to Load Google Sheet Data -->
+    <script>
+        async function fetchArticles() {
+            const sheetURL = 'https://docs.google.com/spreadsheets/d/e/YOUR_SHEET_ID/pub?output=csv';
+            try {
+                const response = await fetch(sheetURL);
+                const data = await response.text();
+
+                const rows = data.split('\n');
+                const articles = rows.slice(1).map(row => {
+                    const [id, title, link, keywords] = row.split(',');
+                    return { id: id.trim(), title: title.trim(), link: link.trim(), keywords: keywords.trim() };
+                });
+
+                populateArticles(articles);
+                return articles;
+            } catch (error) {
+                document.getElementById('errorMessage').style.display = 'block';
+                console.error('Error loading articles:', error);
+            }
+        }
+
+        function populateArticles(articles) {
+            const articleCards = document.getElementById('articleCards');
+            articleCards.innerHTML = '';
+
+            articles.forEach(article => {
+                const card = document.createElement('div');
+                card.className = 'card';
+
+                const title = document.createElement('h3');
+                title.textContent = article.title;
+
+                const link = document.createElement('a');
+                link.href = article.link;
+                link.target = '_blank';
+                link.textContent = 'Read More';
+
+                card.appendChild(title);
+                card.appendChild(link);
+                articleCards.appendChild(card);
+            });
+        }
+
+        async function searchArticles() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const articles = await fetchArticles();
+
+            const filteredArticles = articles.filter(article =>
+                article.id.includes(query) ||
+                article.title.toLowerCase().includes(query) ||
+                article.keywords.toLowerCase().includes(query)
+            );
+
+            populateArticles(filteredArticles);
+        }
+
+        fetchArticles();
+    </script>
+</body>
+</html>
